@@ -1,0 +1,31 @@
+{
+  "name": "liri_bot",
+  "version": "1.0.0",
+  "description": "A command-line language interpretation and recognition interface (LIRI). Built for the UCLA Coding Bootcamp 2019.",
+  "main": "keys.js",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "bandsintown": "^1.0.1",
+    "dotenv": "^8.0.0",
+    "moment": "^2.24.0",
+    "node-spotify-api": "^1.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ingan274/LiriBot.git"
+  },
+  "keywords": [
+    "node",
+    "javascript"
+  ],
+  "author": "Isabel Ngan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ingan274/LiriBot/issues"
+  },
+  "homepage": "https://github.com/ingan274/LiriBot#readme"
+}

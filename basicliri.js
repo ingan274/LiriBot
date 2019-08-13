@@ -1,10 +1,10 @@
 // --------------------------------------------------------------------------------- requires and global variables
 require("dotenv").config();
-var inquirer = require('inquirer');
-var keys = require("./keys.js");
 var fs = require('fs');
+var keys = require("./keys.js");
+var moment = require('moment');
 
-// var BandsInTown = require('bandsintown')(bandsInTownID);
+var axios = require("axios");
 var bandsintown = keys.bandsInTown;
 var bandsInTownID = bandsintown.id;
 
@@ -31,11 +31,12 @@ var content = process.argv.slice(3).join(" ")
 
 var space = "\n\n" + "\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0";
 var header = chalkTitle("\n================= LIRI found this ... ==================");
+var line = chalk.blue("---------------------------------------------------------");
 // --------------------------------------------------------------------------------- Spotify  
 var getSpotifyInfo = (song) => {
     spotify.search({ type: 'track', query: song }, (error, song) => {
         if (error) {
-            console.log("Oops. Looks there is not information on that song. " + error);
+            return console.error("Oops. Looks like that information we can't search. " + error);
         } else {
             var songName = song.tracks.items[0].name;
             var albumName = song.tracks.items[0].album.name;
@@ -52,7 +53,33 @@ var getSpotifyInfo = (song) => {
 
 // --------------------------------------------------------------------------------- Band In Town 
 var getConcertInfo = (artist) => {
+    var artistSearch = artist.replace(/['"]+/g,'').split(" ").join("+");
+    var myUrl = 'https://rest.bandsintown.com/artists/' + artistSearch + '/events?app_id=' + bandsInTownID;
+    axios.get(myUrl)
+        .then((response) => {
+            concerts = response.data;
+            console.log(header)
+            // console.log(concerts)
+            if (concerts.length == 0) {
+                console.log("\n\nLooks like the Artist or Band you are looking for is not performing this year. Please try a new search." + space)
+            } else {
+                for (var concert of concerts) {
+                    var day = "Concert Date: " + moment(concert.datetime).format('dddd, MMMM Do YYYY, h:mm:ss a');
+                    var venue = `Venue Name: ${concert.venue.name}`;
+                    var venueLocationCity = `Venue Location: ${concert.venue.city}`;
+                    var venueLocationRegion = `${concert.venue.region}`;
+                    var venueLocationCountry = `${concert.venue.country}`;
+                    var lineup = `Artist: ${concert.lineup}`;
 
+                    console.log(space + chalk.underline(lineup) + space + day + space + venue + space +
+                        venueLocationCity + ", " + venueLocationRegion + " " + venueLocationCountry +
+                        space + line)
+                }
+            }
+        })
+        .catch((error) => {
+            return console.error("Oops. Looks like that information we can't search. " + error);
+        });
 }
 
 // --------------------------------------------------------------------------------- OMDB   
@@ -64,7 +91,7 @@ var getMovieInfo = (movie) => {
 
     OMDB.get(params, (error, movie) => {
         if (error) {
-            return console.error("Oops. Looks there is not information on that search. " + error);
+            return console.error("Oops. Looks like that information we can't search. " + error);
         } else if (!movie) {
             return console.log('Movie not found!');
         }
@@ -82,9 +109,35 @@ var getMovieInfo = (movie) => {
 
 // --------------------------------------------------------------------------------- Suprise!   
 var suprise = (search) => {
+    var min = 1;
+    var max = 3;
+    var random = parseInt(Math.random() * (max - min) + min);
 
+    fs.readFile('./random/random' + random + '.txt', 'utf8', (error, data) => {
+        if (error) {
+            return console.error("Oops. Looks like that information we can't search. " + error);
+        } else {
+            var fileContent = data.split(',');
+            userSearch = fileContent[1];
+            switch (fileContent[0]) {
+                case 'Spotify':
+                    getSpotifyInfo(userSearch);
+                    break;
+                case 'Movie':
+                    getMovieInfo(userSearch);
+                    break;
+                case 'Concerts':
+                    getConcertInfo(userSearch);
+                    break;
+                case 'Suprise me!':
+                    suprise();
+                    break;
+                default:
+                    console.log('Sorry. Looks like LIRI cannot do that function');
+            }
+        }
+    });
 }
-
 // --------------------------------------------------------------------------------- Initial Questions of actions
 if (command === "spotify-this-song") {
     getSpotifyInfo(content);
@@ -95,5 +148,5 @@ if (command === "spotify-this-song") {
 } else if (command === "do-what-it-says") {
     suprise();
 } else {
-    console.log('Sorry. Looks like LIRI cannot do that function. Please check parameters');
+    console.log('Sorry. Looks like LIRI cannot do that function. Please use the following commands: spotify-this-song, concert-this, movie-this, or do-what-it-says');
 }

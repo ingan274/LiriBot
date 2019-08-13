@@ -12,8 +12,7 @@ So a better question would be, what can't LIRI do?
 
 ## Great! So how do I use LIRI?
 LIRI is a command-line application built using Node.js, so you can run it in your terminal. Type one of the following commands exactly as specified below to see it in action.
-<br><br>
-
+<br>
 #### With basicliri.js:
 <li>🤘🏼 node basicliri.js concert-this 'Artist/Band name' </li> 
 <li>🎵 node basicliri.js spotify-this-song 'Song Title' </li> 
@@ -21,7 +20,6 @@ LIRI is a command-line application built using Node.js, so you can run it in you
 <li>🎥 node basicliri.js movie-this 'Movie Title' </li> 
 <li>If you don't enter a movie title, LIRI will pick a cool movie to search for you. </li> 
 <li>❓ node basicliri.js do-what-it-says </li> 
-<br>
 <br>
 
 #### No User friendly?? I made it easier, with LIRI 2.0! <br>

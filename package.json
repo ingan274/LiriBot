@@ -8,9 +8,10 @@
     "bandsintown": "^1.0.1",
     "chalk": "^2.4.2",
     "dotenv": "^8.0.0",
+    "inquirer": "^6.5.1",
     "moment": "^2.24.0",
     "node-spotify-api": "^1.1.1",
-    "omdb": "^0.8.0"
+    "omdb-client": "^2.0.0"
   },
   "devDependencies": {},
   "scripts": {

@@ -34,9 +34,13 @@ var header = chalkTitle("\n================= LIRI found this ... ===============
 var line = chalk.blue("---------------------------------------------------------");
 // --------------------------------------------------------------------------------- Spotify  
 var getSpotifyInfo = (song) => {
+    if (song === "") {
+        return console.log("Looks like you need to didn't choose a song to search. Please Try again.");
+    }
+
     spotify.search({ type: 'track', query: song }, (error, song) => {
         if (error) {
-            return console.error("Oops. Looks like that information we can't search. " + error);
+            return console.log("Oops. Looks like that information we can't search. " + error);
         } else {
             var songName = song.tracks.items[0].name;
             var albumName = song.tracks.items[0].album.name;
@@ -53,6 +57,10 @@ var getSpotifyInfo = (song) => {
 
 // --------------------------------------------------------------------------------- Band In Town 
 var getConcertInfo = (artist) => {
+    if (artist === "") {
+        return console.log("Looks like you need to didn't choose a Artist or Band to search. Please Try again.");
+    }
+
     var artistSearch = artist.replace(/['"]+/g,'').split(" ").join("+");
     var myUrl = 'https://rest.bandsintown.com/artists/' + artistSearch + '/events?app_id=' + bandsInTownID;
     axios.get(myUrl)
@@ -87,6 +95,10 @@ var getMovieInfo = (movie) => {
     var params = {
         apiKey: omdbAPIKEY,
         title: movie
+    }
+
+    if (movie === "") {
+        return console.log("Looks like you need to didn't choose a Movie Title to search. Please Try again.");
     }
 
     OMDB.get(params, (error, movie) => {

@@ -16,9 +16,7 @@ LIRI is a command-line application built using Node.js, so you can run it in you
 #### With basicliri.js:
 <li>🤘🏼 node basicliri.js concert-this 'Artist/Band name' </li> 
 <li>🎵 node basicliri.js spotify-this-song 'Song Title' </li> 
-<li>If you don't enter a song title, LIRI will pick a fun song to search for you. </li> 
 <li>🎥 node basicliri.js movie-this 'Movie Title' </li> 
-<li>If you don't enter a movie title, LIRI will pick a cool movie to search for you. </li> 
 <li>❓ node basicliri.js do-what-it-says </li> 
 <br>
 

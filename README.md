@@ -18,14 +18,14 @@ LIRI is a command-line application built using Node.js, so you can run it in you
 <li>🎵 node basicliri.js spotify-this-song 'Song Title' </li> 
 <li>🎥 node basicliri.js movie-this 'Movie Title' </li> 
 <li>❓ node basicliri.js do-what-it-says </li> 
-![Basic LIRI Demo](./demo/basicDemo.gif)
+![Basic LIRI Demo](demo/basicDemo.gif)
 <br>
 
 #### Not User friendly?? I made it easier, with LIRI 2.0! <br>
 With liribot.js:
 <li>🤘🏼🎵🎥❓ node liribot.js </li> 
 <li>You will be prompted to see what you would like to search! (so much easier, right?)</li> 
-![LIRI 2.0 Demo](./demo/liriDemo.gif)
+![LIRI 2.0 Demo](demo/liriDemo.gif)
 
 ### Programming notes
 Please obtain API keys or IDs by

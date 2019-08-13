@@ -4,12 +4,16 @@ var keys = require("./keys.js");
 
 var Concert = require("");
 var concertKeys = new Concert(keys.bandsInTown);
+var concertID = concertKeys.id;
 
 var Spotify = require("node-spotify-api");
 var spotifyKeys = new Spotify(keys.spotify);
+var spotifyID = spotifyKeys.id;
+var spotifySecret = spotifyKeys.secret;
 
 var OMDB = require("omdb");
-var omdbKeys = new Spotify(keys.omdb);
+var omdbKeys = new OMDB(keys.omdb);
+var omdbAPIKEY = omdbKeys.id;
 
 var request = require("request");
 
@@ -25,10 +29,10 @@ var content = process.argv[3];
 var space = "\n" + "\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0";
 var header = "================= Liri found this ...==================";
 
-// --------------------------------------------------------------------------------- Spotify
+// ---------------------------------------------------------------------------------  Spotify  ---------------------------------------------------------------------------------
 
 
-// --------------------------------------------------------------------------------- Concerts
+// --------------------------------------------------------------------------------- Concerts ---------------------------------------------------------------------------------
 
 
-// --------------------------------------------------------------------------------- OMDB
+// ---------------------------------------------------------------------------------   OMDB   ---------------------------------------------------------------------------------

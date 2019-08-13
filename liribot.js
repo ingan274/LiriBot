@@ -16,7 +16,7 @@ var request = require("request");
 var fs = require("fs");
 
 var chalk = require("chalk");
-var chalkTitle = chalk.black;
+var chalkTitle = chalk.inverse;
 
 
 var command = process.argv[2];

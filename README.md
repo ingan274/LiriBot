@@ -31,7 +31,8 @@ Please obtain API keys or IDs by
  <li> emailing support@bandsintown.com for an API ID for BandsInTown </li>
  <li> going to http://www.omdbapi.com/ for an API key for OMDB </li>
  <li> going to https://developer.spotify.com/dashboard/applications for an API Client ID and Secret for Spotify </li>
-
+<br><br>
 Happy LIRI-ing!
 
+#### Week 10 assigment for the June 2019 cohort of UCLA Boot Camp. Built using JavaScript, Node.
 

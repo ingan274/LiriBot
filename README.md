@@ -10,10 +10,10 @@ LIRI can...
 
 So a better question would be, what can't LIRI do?
 
-## Great! So how do I use LIRI?
-LIRI is a command-line application built using Node.js, so you can run it in your terminal. Type one of the following commands exactly as specified below to see it in action.
-<br>
+## Great! So how do I use LIRI? <br>
+LIRI is a command-line application built using Node.js, so you can run it in your terminal. 
 #### With basicliri.js:
+Type one of the following commands exactly as specified below to see it in action.
 <li>🤘🏼 node basicliri.js concert-this 'Artist/Band name' </li> 
 <li>🎵 node basicliri.js spotify-this-song 'Song Title' </li> 
 <li>🎥 node basicliri.js movie-this 'Movie Title' </li> 
@@ -23,8 +23,9 @@ LIRI is a command-line application built using Node.js, so you can run it in you
 
 <br>
 
-#### Not User friendly?? I made it easier, with LIRI 2.0! <br>
-With liribot.js:
+### Not User friendly?? I made it easier, with LIRI 2.0! <br>
+Type below command (and there is only ONE!)
+#### With liribot.js:
 <li>🤘🏼🎵🎥❓ node liribot.js </li> 
 <li>You will be prompted to see what you would like to search! (so much easier, right?)</li> 
 

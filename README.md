@@ -17,7 +17,8 @@ Type one of the following commands exactly as specified below to see it in actio
 <li>🎵 node basicliri.js spotify-this-song 'Song Title' </li> 
 <li>🎥 node basicliri.js movie-this 'Movie Title' </li> 
 <li>❓ node basicliri.js do-what-it-says </li> 
-##### NOTE: search term (Artist/Band Name, Song Title, or Movie Title) does not need to be between "quotations."
+
+###### NOTE: search term (Artist/Band Name, Song Title, or Movie Title) does not need to be between "quotations."
 
 ![Liri 1.0 Demo](demo/basicDemo.gif)
 

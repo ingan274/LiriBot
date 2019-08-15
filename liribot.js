@@ -22,8 +22,6 @@ var OMDB = require("omdb-client");
 var omdbKeys = keys.omdb;
 var omdbAPIKEY = omdbKeys.key;
 
-var request = require("request");
-
 var chalk = require("chalk");
 var chalkTitle = chalk.inverse;
 
@@ -144,13 +142,14 @@ var getSpotifyInfo = (song) => {
                 space + "Album Name: " + albumName +
                 space + "Artist Name: " + artistName +
                 space + "URL: " + url + space);
+
         }
     })
 }
 
 // --------------------------------------------------------------------------------- Band In Town 
 var getConcertInfo = (artist) => {
-    var artistSearch = artist.replace(/['"]+/g,'').split(" ").join("+");
+    var artistSearch = artist.replace(/['"]+/g, '').split(" ").join("+");
     // console.log(artistSearch)
     var myUrl = 'https://rest.bandsintown.com/artists/' + artistSearch + '/events?app_id=' + bandsInTownID;
     axios.get(myUrl)
@@ -172,6 +171,7 @@ var getConcertInfo = (artist) => {
                     console.log(space + chalk.underline(lineup) + space + day + space + venue + space +
                         venueLocationCity + ", " + venueLocationRegion + " " + venueLocationCountry +
                         space + line)
+
                 }
             }
         })

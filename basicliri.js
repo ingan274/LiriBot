@@ -21,13 +21,11 @@ var OMDB = require("omdb-client");
 var omdbKeys = keys.omdb;
 var omdbAPIKEY = omdbKeys.key;
 
-var request = require("request");
-
 var chalk = require("chalk");
 var chalkTitle = chalk.inverse;
 
 var command = process.argv[2];
-var content = process.argv.slice(3).join(" ")
+var content = process.argv.slice(3).join(" ");
 
 var space = "\n\n" + "\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0";
 var header = chalkTitle("\n================= LIRI found this ... ==================");
@@ -61,7 +59,7 @@ var getConcertInfo = (artist) => {
         return console.log("Looks like you need to didn't choose a Artist or Band to search. Please Try again.");
     }
 
-    var artistSearch = artist.replace(/['"]+/g,'').split(" ").join("+");
+    var artistSearch = artist.replace(/['"]+/g, '').split(" ").join("+");
     var myUrl = 'https://rest.bandsintown.com/artists/' + artistSearch + '/events?app_id=' + bandsInTownID;
     axios.get(myUrl)
         .then((response) => {
@@ -82,6 +80,7 @@ var getConcertInfo = (artist) => {
                     console.log(space + chalk.underline(lineup) + space + day + space + venue + space +
                         venueLocationCity + ", " + venueLocationRegion + " " + venueLocationCountry +
                         space + line)
+
                 }
             }
         })
@@ -116,6 +115,7 @@ var getMovieInfo = (movie) => {
             space + "Awards: " + movie.Awards + space);
         // console.log('--------------------')
         // console.log(movie)
+
     });
 }
 
@@ -161,4 +161,4 @@ if (command === "spotify-this-song") {
     suprise();
 } else {
     console.log('Sorry. Looks like LIRI cannot do that function. Please use the following commands: spotify-this-song, concert-this, movie-this, or do-what-it-says');
-}
+};

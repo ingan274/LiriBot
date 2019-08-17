@@ -133,17 +133,22 @@ var getSpotifyInfo = (song) => {
         if (error) {
             return console.error("Oops. Looks like that information we can't search. " + error);
         } else {
-            var songName = song.tracks.items[0].name;
-            var albumName = song.tracks.items[0].album.name;
-            var artistName = song.tracks.items[0].album.artists[0].name;
-            var url = song.tracks.items[0].album.external_urls.spotify;
+            var search = song.tracks.items
+            console.log(header)
+            for (var songs of search) {
+                var songName = songs.name;
+                var albumName = songs.album.name;
+                var artistName = songs.album.artists[0].name;
+                var url = songs.album.external_urls.spotify;
 
-            console.log(header + space + "Song Name: " + "'" + chalk.underline(songName) + "'" +
-                space + "Album Name: " + albumName +
-                space + "Artist Name: " + artistName +
-                space + "URL: " + url + space);
+                console.log(space + "Song Name: " + "'" + chalk.underline(songName) + "'" +
+                    space + "Album Name: " + albumName +
+                    space + "Artist Name: " + artistName +
+                    space + "URL: " + url + space + line);
 
+            }
         }
+
     })
 }
 

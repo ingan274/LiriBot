@@ -122,7 +122,7 @@ var getMovieInfo = (movie) => {
 // --------------------------------------------------------------------------------- Suprise!   
 var suprise = (search) => {
     var min = 1;
-    var max = 3;
+    var max = 5;
     var random = parseInt(Math.random() * (max - min) + min);
 
     fs.readFile('./random/random' + random + '.txt', 'utf8', (error, data) => {

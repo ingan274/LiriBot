@@ -34,10 +34,14 @@ var line = chalk.blue("---------------------------------------------------------
 var getSpotifyInfo = (song) => {
     spotify.search({ type: 'track', query: song }, (error, song) => {
         if (error) {
+            console.log(header);
             return console.error("Oops. Looks like that information we can't search. " + error);
         } else {
             var search = song.tracks.items
-            console.log(header)
+            var spotifyTitle = chalk.bold.yellow("\n================= Top 5 Search Results ==================");
+            console.log(header + space + spotifyTitle)
+            var counter = 0;
+            var limit = 5;
             for (var songs of search) {
                 var songName = songs.name;
                 var albumName = songs.album.name;
@@ -48,6 +52,9 @@ var getSpotifyInfo = (song) => {
                     space + "Album Name: " + albumName +
                     space + "Artist Name: " + artistName +
                     space + "URL: " + url + space + line);
+
+
+                if (++counter >= limit) break;
 
             }
         }
@@ -66,11 +73,16 @@ var getConcertInfo = (artist) => {
     axios.get(myUrl)
         .then((response) => {
             concerts = response.data;
-            console.log(header)
             // console.log(concerts)
+           
             if (concerts.length == 0) {
+                console.log(header)
                 console.log("\n\nLooks like the Artist or Band you are looking for is not performing this year. Please try a new search." + space)
             } else {
+                var counter = 0;
+                var limit = 5;
+                var concertTitle = chalk.bold.yellow("\n================= Next 5 Concerts Coming Up ==================");
+                console.log(header + space + concertTitle)
                 for (var concert of concerts) {
                     var day = "Concert Date: " + moment(concert.datetime).format('dddd, MMMM Do YYYY, h:mm:ss a');
                     var venue = `Venue Name: ${concert.venue.name}`;
@@ -82,6 +94,8 @@ var getConcertInfo = (artist) => {
                     console.log(space + chalk.underline(lineup) + space + day + space + venue + space +
                         venueLocationCity + ", " + venueLocationRegion + " " + venueLocationCountry +
                         space + line)
+
+                    if (++counter >= limit) break;
 
                 }
             }

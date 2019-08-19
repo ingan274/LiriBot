@@ -47,7 +47,7 @@ var questions = [{
         setTimeout(function () {
             if (input === '') {
                 // Pass the return value in the done callback
-                console.log('Oops. Looks like you need to provide a search term. Please try again.');
+                console.log('Oops. Looks like you need to provide a movie title. Please try again.');
                 return;
             }
             // Pass the return value in the done callback
@@ -69,7 +69,7 @@ var questions = [{
         setTimeout(function () {
             if (input === '') {
                 // Pass the return value in the done callback
-                console.log('Oops. Looks like you need to provide a search term. Please try again.');
+                console.log('Oops. Looks like you need to provide a song title. Please try again.');
                 return;
             }
             // Pass the return value in the done callback
@@ -91,7 +91,7 @@ var questions = [{
         setTimeout(function () {
             if (input === '') {
                 // Pass the return value in the done callback
-                console.log('Oops. Looks like you need to provide a search term. Please try again.');
+                console.log('Oops. Looks like you need to provide a artist/band. Please try again.');
                 return;
             }
             // Pass the return value in the done callback
@@ -132,7 +132,7 @@ var getSpotifyInfo = (song) => {
     spotify.search({ type: 'track', query: song }, (error, song) => {
         if (error) {
             console.log(header)
-            return console.error("Oops. Looks like that information we can't search. " + error);
+            return console.error("Oops. Looks like that's information I can't searched. " + error);
         } else {
             var search = song.tracks.items
             var spotifyTitle = chalk.bold.yellow("\n================= Top 5 Search Results ==================");

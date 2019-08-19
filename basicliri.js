@@ -143,7 +143,7 @@ var suprise = (search) => {
 
     fs.readFile('./random/random' + random + '.txt', 'utf8', (error, data) => {
         if (error) {
-            return console.error("Oops. Looks like that information we can't search. " + error);
+            return console.error("Oops. Looks like that is information we can't search. " + error);
         } else {
             var fileContent = data.split(',');
             userSearch = fileContent[1];
@@ -176,5 +176,5 @@ if (command === "spotify-this-song") {
 } else if (command === "do-what-it-says") {
     suprise();
 } else {
-    console.log('Sorry. Looks like LIRI cannot do that function. Please use the following commands: spotify-this-song, concert-this, movie-this, or do-what-it-says');
+    console.log('Sorry. Looks like LIRI cannot do that function. Please use the following commands: \nspotify-this-song \nconcert-this\nmovie-this \ndo-what-it-says');
 };

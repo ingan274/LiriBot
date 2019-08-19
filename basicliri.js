@@ -74,7 +74,7 @@ var getConcertInfo = (artist) => {
         .then((response) => {
             concerts = response.data;
             // console.log(concerts)
-           
+
             if (concerts.length == 0) {
                 console.log(header)
                 console.log("\n\nLooks like the Artist or Band you are looking for is not performing this year. Please try a new search." + space)
@@ -115,23 +115,21 @@ var getMovieInfo = (movie) => {
     if (movie === "") {
         return console.log("Looks like you need to didn't choose a Movie Title to search. Please Try again.");
     }
-
     OMDB.get(params, (error, movie) => {
         if (error) {
             return console.error("Oops. Looks like that information we can't search. " + error);
         } else if (!movie) {
             return console.log('Movie not found!');
         }
-
         console.log(header + space + "Movie Title: " + chalk.underline(movie.Title) +
             space + "Movie Year: " + movie.Year +
-            space + "Movie Rating: " + movie.imdbRating + "/10" +
+            space + "IMDB Rating: " + movie.imdbRating + "/10" +
             space + "Rotten Tomatoes Rating: " + movie.Ratings[1].Value +
             space + "Movie Plot: " + movie.Plot +
+            space + "Actors: " + movie.Actors +
             space + "Awards: " + movie.Awards + space);
         // console.log('--------------------')
         // console.log(movie)
-
     });
 }
 

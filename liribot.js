@@ -211,12 +211,12 @@ var getMovieInfo = (movie) => {
         } else if (!movie) {
             return console.log('Movie not found!');
         }
-
         console.log(header + space + "Movie Title: " + chalk.underline(movie.Title) +
             space + "Movie Year: " + movie.Year +
-            space + "Movie Rating: " + movie.imdbRating + "/10" +
+            space + "IMDB Rating: " + movie.imdbRating + "/10" +
             space + "Rotten Tomatoes Rating: " + movie.Ratings[1].Value +
             space + "Movie Plot: " + movie.Plot +
+            space + "Actors: " + movie.Actors +
             space + "Awards: " + movie.Awards + space);
         // console.log('--------------------')
         // console.log(movie)
